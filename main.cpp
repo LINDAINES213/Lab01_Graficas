@@ -210,8 +210,29 @@ void render(const std::string& filename, int width, int height) {
     drawPolygon(framebuffer, polygon2Vertices, borderColor, width, borderWidth);
     renderBuffer("out.bmp", width, height, framebuffer);
 
-    delete[] framebuffer;
+    std::vector<Vertex2> polygon1Vertices = {
+            Vertex2(165, 380),
+            Vertex2(185, 360),
+            Vertex2(180, 330),
+            Vertex2(207, 345),
+            Vertex2(233, 330),
+            Vertex2(230, 360),
+            Vertex2(250, 380),
+            Vertex2(220, 385),
+            Vertex2(205, 410),
+            Vertex2(193, 383)
+    };
 
+    // Relleno del polígono (color amarillo)
+    Color fillColor2(255, 255, 0);
+    fillPolygon(framebuffer, polygon1Vertices, fillColor2, width);
+
+    drawPolygon(framebuffer, polygon1Vertices, borderColor, width, borderWidth);
+
+
+    renderBuffer(filename, width, height, framebuffer);
+
+    delete[] framebuffer;
 }
 
 int main() {
@@ -223,3 +244,4 @@ int main() {
 
     return 0;
 }
+
