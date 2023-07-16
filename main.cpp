@@ -193,6 +193,21 @@ void render(const std::string& filename, int width, int height) {
 
     Color currentColor(255, 255, 255);
 
+    // Dibujar la orilla del polígono (color blanco)
+    Color borderColor(255, 255, 255);
+    int borderWidth = 3;
+
+    std::vector<Vertex2> polygon3Vertices = {
+            Vertex2(377, 249),
+            Vertex2(411, 197),
+            Vertex2(436, 249)
+    };
+
+    // Relleno del polígono (color rojo)
+    Color fillColor3(255, 0, 0);
+    fillPolygon(framebuffer, polygon3Vertices, fillColor3, width);
+    drawPolygon(framebuffer, polygon3Vertices, borderColor, width, borderWidth);
+
     std::vector<Vertex2> polygon2Vertices = {
             Vertex2(321, 335),
             Vertex2(288, 286),
@@ -203,12 +218,7 @@ void render(const std::string& filename, int width, int height) {
     // Relleno del polígono (color azul)
     Color fillColor(0, 0, 255);
     fillPolygon(framebuffer, polygon2Vertices, fillColor, width);
-
-    // Dibujar la orilla del polígono (color blanco)
-    Color borderColor(255, 255, 255);
-    int borderWidth = 3;
     drawPolygon(framebuffer, polygon2Vertices, borderColor, width, borderWidth);
-    renderBuffer("out.bmp", width, height, framebuffer);
 
     std::vector<Vertex2> polygon1Vertices = {
             Vertex2(165, 380),
@@ -226,9 +236,7 @@ void render(const std::string& filename, int width, int height) {
     // Relleno del polígono (color amarillo)
     Color fillColor2(255, 255, 0);
     fillPolygon(framebuffer, polygon1Vertices, fillColor2, width);
-
     drawPolygon(framebuffer, polygon1Vertices, borderColor, width, borderWidth);
-
 
     renderBuffer(filename, width, height, framebuffer);
 
@@ -244,4 +252,3 @@ int main() {
 
     return 0;
 }
-
